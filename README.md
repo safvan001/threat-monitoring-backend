@@ -396,3 +396,4 @@ This collection contains preconfigured requests for authentication, event creati
 - The codebase is organized into separate apps (accounts, events, alerts) for maintainability
 - Settings are split into base, development, and production configurations
 - CORS is configured to allow cross-origin requests (adjust for production)
+
