@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "b25148f8-c699-414d-a233-5562595a9250",
+		"name": "Threat-Monitoring-Backend Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27994184"
+	},
+	"item": [
+		{
+			"name": "Create Event",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY2NjQ2NDY4LCJpYXQiOjE3NjY2NDYxNjgsImp0aSI6IjA5MGRmYjlhNTU1YzQxMGJhZjBlMjgyNmVjMGNmZjk1IiwidXNlcl9pZCI6IjIifQ.7KDyJnhJsj56C6pGCqyAXbkloMLGr68a1q1PT8hPd_U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"source\":\"camera\",\r\n    \"event_type\":\"intrusion\",\r\n    \"severity\":3,\r\n    \"description\":\"camera detected a high severity alert\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/api/events/create-event/",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"events",
+						"create-event",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"admin_user\",\r\n    \"password\":\"Admin@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/api/token/",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Alerts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY2NjY1MTI2LCJpYXQiOjE3NjY2NjE1MjYsImp0aSI6ImVlNDMyNDQ2NzczZTQzOWE4MzEwYzBmYjRjYmFkMmYyIiwidXNlcl9pZCI6IjIifQ.gOACTPmuecIHLBU1ctSJMYtqQ5lFYzhpFfKAGp0DyBw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/api/alerts/list-alerts?status=1&severity=3",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"alerts",
+						"list-alerts"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "1"
+						},
+						{
+							"key": "severity",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Alert",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY2NjY1MTI2LCJpYXQiOjE3NjY2NjE1MjYsImp0aSI6ImVlNDMyNDQ2NzczZTQzOWE4MzEwYzBmYjRjYmFkMmYyIiwidXNlcl9pZCI6IjIifQ.gOACTPmuecIHLBU1ctSJMYtqQ5lFYzhpFfKAGp0DyBw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\":3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/api/alerts/update-alert/3/",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"alerts",
+						"update-alert",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Access Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2Njc0NjAyOSwiaWF0IjoxNzY2NjU5NjI5LCJqdGkiOiJmNGY1ZmFlYzJjMjM0YjY4YTliZTMxYmQ3ZTM1NGY0NSIsInVzZXJfaWQiOiIyIn0._2v4NMdPJcNtA1T2BNbfS09hfDgq3QdNNwMocBblECk\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/api/token/refresh/",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"api",
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
